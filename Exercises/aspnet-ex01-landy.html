@@ -1,0 +1,41 @@
+<!DOCTYPE html />
+<html>
+    <head>
+		<title>ISTA 322: Exercise 01</title>		
+		<meta name = "Author" content = "Dmitry Landy" />
+		<meta name = "File" content = "aspnet-ex01-landy.html" />
+		<meta name = "Date" content = "2/25/2021" />
+	</head>
+
+    <body>
+        <h1>Exercise 01</h1>
+        
+        <p>Please fillout the user registration form</p>
+        
+        <div style="border: 2px solid black; text-align: left; max-width: min-content; padding: 2em;">
+            <h3>Name Form</h3>
+
+            <form method= "GET">
+                
+                First Name: <br><input type="text" name = "fName" id = "fName" />
+                Last Name: <br><input name = "lName" id = "lName" type="text"/>
+                E-Mail: <br><input type="text" name="email" id="email"/>
+                Password: <br><input type="password" name="pass" id="pass">
+                <br>Role: 
+                <select name="role" id="role">
+                    <option value="adminRole">Admin</option>
+                    <option value="userRole">User</option>
+                </select>
+
+                <hr>			
+			    <input type="submit" value = "submit">
+			    <input type="reset" name="clearForm" id="clearForm"> 
+            </form>
+            
+        </div>
+
+        <form method="GET">
+			
+    </body>
+    
+</html>

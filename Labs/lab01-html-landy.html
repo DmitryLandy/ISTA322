@@ -1,0 +1,146 @@
+<!DOCTYPE html />
+<html>
+	<head>
+		<title>My First HTML</title>
+		<style>
+			/* <!-- CSS --> */
+		</style>
+		<script>
+			//<!-- javascript goes here -->
+		</script>
+		<meta name = "Author" content = "Dmitry Landy" />
+		<meta name = "File" content = "lab01-html-landy.html" />
+		<meta name = "Date" content = "2/22/2021" />
+	</head>
+	<body>
+		<a id="top">
+		<a href="#bottom">go to bottom</a>
+		
+		<!--This is a comment-->
+		<h1>ISTA 322 Lab 1 (HTML)</h1>
+		<h2>This is the H2 Header</h2>
+
+		<h3>This is the H3 Header</h3>
+
+		<h4>This is the H4 Header</h4>
+
+		<h5>This is the H5 Header</h5>
+
+		<h6>This is the H6 Header</h6><br>
+
+		<h2>Generic Elements &lt;div&gt;, &lt;span&gt;</h2>
+
+		<div>This is a generic block element</div>
+		<div>This is a generic block element</div>
+		<div>This is a generic block element</div>
+		<div>
+			<span style = "font-variant: small-caps;">small caps format</span>
+			<span style = "background-color: beige;">beige background</span>
+			<span style="font-family: sans-serif;">sans serif font</span>
+
+		</div>
+
+		<h3>Links</h3>
+		<a href="http://github.com" target = "new">Github</a><br>
+		<a href="http://amazon.com" target = "new">Amazon</a><br>
+
+		<h3>Table</h3>
+		<center>
+			<table rules = "all" style="border: 2px solid black;">
+				<tr>
+					<th colspan = "3" style = "color: white; background-color: black">Personnel</th>
+				</tr>
+				<tr>
+					<th>Name</th>
+					<th>Rank</th>
+					<th>Serial Num</th>
+				</tr>
+				
+				<tr>
+					<td>Will</td>
+					<td>CPT</td>
+					<td>12312312</td>
+				</tr>
+				<tr>
+					<td>Dmitry</td>
+					<td>SGT</td>
+					<td>98721213</td>
+				</tr>
+				<tr>
+					<td>Bobby</td>
+					<td>1LT</td>
+					<td>823984239</td>
+				</tr>
+			</table>
+
+		</center>
+
+		<h2>HTML Form</h2>
+		
+		<form method="GET">
+			<input type="hidden" name="hiddenthing" id="hiddenthing" value="42">
+			what is your name: <input type="text" name = "adam" id = "adam" /> <br>
+			what is your password: <input type="password" name = betty" id = "betty"> <br>
+			Color input: <input type="color" name = "myColor" id = "myColor">
+			
+			Range input: <input type="range" name="myrange" id="myrange" value = "50"
+				min="0" max = "100" step = "5" oninput="rangeOutput.value = myrange.value">
+				<output style = "border: 1px red solid;" id="rangeOutput" name = "rangeOutput"></output>
+			
+			<h3>Pizza</h3>
+			Pepperoni: <input type="checkbox" name="pizza" id="pizza" value="pepperoni">
+			Bell Pepper: <input type="checkbox" name="pizza" id="pizza" value="bellPepper">
+			Bacon: <input type="checkbox" name="pizza" id="pizza" value="bacon">
+			Mushroom: <input type="checkbox" name="pizza" id="pizza" value="mushroom">
+			Pineapple: <input type="checkbox" name="pizza" id="pizza" value="pineappple">
+			Extra Cheese: <input type="checkbox" name="pizza" id="pizza" value="extraCheese">
+			<br>
+			<select name="pizza2" id="pizza2" size="3" multiple = "multiple">
+				<option value="chicken">chicken</option>
+				<option value="Sausage">Sausage</option>
+				<option value="blackolives">black olives</option>
+				<option value="ham">Ham</option>
+				<option value="mozarello">mozarello</option>
+			</select>
+
+			<h3>Sex</h3>
+			Male: <input type="radio" name="sex" id="sex" value = "male">
+			Female: <input type="radio" name="sex" id="sex" value = "female">
+			Don't Know: <input type="radio" name="sex" id="sex" value = "dontknow">
+			
+
+			<h3>State of Birth</h3>
+			<select name="sob" id="sob">
+				<option value="tx">Texas</option>
+				<option value="ks">Kansas</option>
+				<option value="ny">New York</option>
+			</select>
+
+			<textarea name="ta" id="ta" cols="50" rows="5" value = "type something here"></textarea>
+
+
+
+			<hr>			
+			<input type="submit" value = "submit">
+			<input type="reset" name="clearForm" id="clearForm">
+
+			<br>
+
+		</form>
+
+		<hr>
+		
+
+
+		<p>
+			This is an example body paragraph. Its really not anything
+			too crazy, but it does the job.
+		</p>
+
+		<p>
+			This is just another paragraph doing what any paragraph does.
+		</p>
+		<a id="bottom">
+		<a href="#top">Go TO Top</a>
+	</body>
+</html>
