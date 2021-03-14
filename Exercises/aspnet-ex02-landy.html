@@ -1,0 +1,158 @@
+<!DOCTYPE html />
+<!-- 
+    Name: Dmitry Landy
+    File: Exercise02.html
+    Date: 3/7/2021
+ -->
+<style>
+    :root
+    {
+        --bg-color: rgb(129, 129, 133);
+        --text-color: rgb(192, 180, 180);
+        --buttonColor: rgb(76, 182, 185);
+    }
+
+    h1
+    {
+        text-align: center;        
+        color: white;
+        font-weight: 300;        
+        font-size: 50px;        
+    }
+    
+    body
+    {
+        background-color: rgb(192, 180, 180);
+        font-family: 'Titillium Web', sans-serif;
+        font-variant: small-caps;
+
+    }  
+
+    .button 
+    {
+        transition-duration: 0.4s;
+        font-size: 22px;
+        color: white; 
+        border:unset;
+        background-color: var(--buttonColor);  
+        padding: 10px;
+        width: 100%;        
+    }
+
+    .button:hover 
+    {
+        filter: brightness(85%);
+        cursor:pointer;
+    }
+
+    .buttonBlock
+    {
+        display:block;
+        width:100%;
+        margin-top: 5%;
+    }
+    .mainWords
+    {        
+        margin-bottom: 3%;        
+    }
+    .center 
+    {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .form
+    {
+        background-color: var(--bg-color);
+        border-radius:4px;
+        padding: 1% 5%;
+        box-shadow:0 4px 10px 4px;        
+        width: 800px;
+        margin: 5cm auto;        
+    }   
+
+    input[type]
+    {  
+        font-size: 22px;
+        color: white; 
+        border: 2px solid lightgray;
+        background-color: var(--bg-color);  
+        padding: 10px;
+        width: 100%;
+    }
+
+    input[type]:hover
+    {
+        border: 2px solid var(--buttonColor);
+        filter: brightness(120%);
+    }
+
+    select
+    {
+        font-size: 22px;
+        text-align: center;
+        width: 100%;
+        color: white; 
+        border: 2px solid lightgray;
+        background-color: var(--bg-color);  
+        padding: 10px;       
+    }
+    select:hover
+    {
+        border: 2px solid var(--buttonColor);
+        filter: brightness(120%);
+    }
+
+    ::placeholder 
+    { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: var(--text-color);
+        opacity: 1; /* Firefox */
+    }
+    
+</style>
+<html>
+    <head>
+		<title>ISTA 322: Exercise 02</title>		
+		<meta name = "Author" content = "Dmitry Landy" />
+		<meta name = "File" content = "aspnet-ex02-landy.html" />
+		<meta name = "Date" content = "3/7/2021" />
+	</head>
+
+    <body>
+        <div class="form">
+            <h1>Bug Tracker Registration</h1>
+
+            <form method= "GET">
+                <div class="mainwords center">                                        
+                        <input type="text" placeholder="First Name" required style="margin-right: 2%;"/>   
+                        <input type="text" placeholder="Last Name" required style="margin-left: 2%;"/>                        
+                </div>
+                
+
+                <div class="mainWords center">                    
+                    <input type="email" placeholder="E-Mail" required />
+                </div>
+
+                <div class="mainWords center">                    
+                    <input type="password" placeholder="Password" required />
+                </div>             
+               
+                <div class = "mainWords center">
+                    <select name="role" id="role" >
+                        <option value="" disabled selected hidden>Choose Role</option>
+                        <option value="adminRole">Admin</option>
+                        <option value="userRole">User</option>
+                    </select>
+                </div> 
+
+                <button type="submit" class="button buttonBlock center">Register</button>
+			     
+            </form>
+            
+        </div>
+
+        <form method="GET">
+			
+    </body>
+    
+</html>
