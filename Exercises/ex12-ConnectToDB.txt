@@ -1,0 +1,172 @@
+//Name: Dmitry Landy
+//File: ASP NET Exercise 12
+//Date: 4/8/2021
+=================================
+=============STARTUP=============
+using aspnet_ex03.Data;
+using aspnet_ex03.Models;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace aspnet_ex03
+{
+    public class Startup
+    {
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
+        public IConfiguration Configuration { get; }
+
+        // This method gets called by the runtime. Use this method to add services to the container.
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddControllersWithViews();          
+            services.AddDbContext<PersonContext>(opts => opts.UseSqlServer(Configuration.GetConnectionString("PersonConnection")));           
+            
+
+        }
+
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, PersonContext context)
+        {
+            
+            app.UseDeveloperExceptionPage();
+            
+            
+            app.UseHttpsRedirection();
+            app.UseStaticFiles();
+
+            app.UseRouting();
+
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+            });
+
+            if(context.Persons.Count() == 0)
+            {
+                People.SeedData(context);
+            }
+            
+        }
+    }
+}
+
+=============MODELS==============
+public class People
+    {
+        public static void SeedData(PersonContext context)
+        {            
+            var people = new Person[]
+            {
+                new Person{ Name="Dmitry Landy", Age=23, EyeColor="Green", Weight = 140 },
+                new Person{ Name="Boomer Landy", Age=2, EyeColor="Brown", Weight = 70 }
+            };
+
+            foreach (var item in people)
+            {
+                context.Add(item);
+            }
+            context.SaveChanges();
+        }        
+    }
+	public class Person
+    { 
+        public int PersonId { get; set; }
+        public string Name { get; set; }
+        public int Age { get; set; }
+        public int Weight { get; set; }
+        public string EyeColor { get; set; }
+	}
+
+=============VIEWS===============
+@model IEnumerable<aspnet_ex03.Models.Person>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>People</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Weight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EyeColor)
+            </th>            
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Weight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EyeColor)
+            </td>            
+        </tr>
+}
+    </tbody>
+</table>
+
+=============CONTROLLERS=========
+public class HomeController : Controller
+    {
+        private readonly PersonContext _context;
+
+        public HomeController(PersonContext context)
+        {
+            _context = context;
+        }
+
+        public IActionResult Index()
+        {            
+
+            return View(_context.Persons);
+        }
+    }
+=============APPSETTING.JSON===
+{
+  "ConnectionStrings": {
+    "PersonConnection": "Server=(localdb)\\mssqllocaldb;Database=PersonDB;Trusted_Connection=True;MultipleActiveResultSets=true"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information"
+    }
+  },
+  "AllowedHosts": "*"
+}

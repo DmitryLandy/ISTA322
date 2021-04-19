@@ -1,0 +1,51 @@
+Dmitry Landy
+ASP.NET EX 10
+3/27/2021
+====================
+MODELS
+====================
+public class Person
+    {
+        public string Name { get; set; }
+        public int Age { get; set; }
+        public int Weight { get; set; }
+        public string EyeColor { get; set; }
+
+        public Person(string name, int age, int weight, string eyeColor)
+        {
+            Name = name;
+            Age = age;
+            Weight = weight;
+            EyeColor = eyeColor;
+        }       
+        
+
+    }
+====================
+CONTROLLERS
+====================
+public class HomeController : Controller
+    {
+        Person me = new Person("Dmitry Landy", 23, 140, "Green");
+        
+        public IActionResult Index()
+        {
+            return View(me);
+        }
+    }
+
+====================
+VIEWS
+====================
+@model aspnet_ex03.Models.Person;
+
+<div>
+    
+    <li>Name: @Model.Name</li>
+    <li>Age: @Model.Age</li>
+    <li>Weight: @Model.Weight</li>
+    <li>Eye Color: @Model.EyeColor</li>        
+    
+</div>
+
+

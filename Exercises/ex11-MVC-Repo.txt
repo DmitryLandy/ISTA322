@@ -1,0 +1,75 @@
+//Name: Dmitry Landy
+//File: ASP.NET EX4
+//Date: 4/2/2021
+-------------------
+======MODELS=======
+namespace aspnet_ex03.Models
+{
+    public class People
+    {
+        public List<Person> repo = new List<Person>();
+
+        public People()
+        {
+            repo.Add(new Person("Dmitry Landy", 23, 140, "Green"));
+            repo.Add(new Person("Jae", 30, 140, "Green"));
+            repo.Add(new Person("Boomer", 2, 70, "Brown"));
+            repo.Add(new Person("Nina", 4, 55, "Brown"));
+        }
+
+    }
+	
+	    public class Person
+    {
+        public string Name { get; set; }
+        public int Age { get; set; }
+        public int Weight { get; set; }
+        public string EyeColor { get; set; }
+
+        public Person(string name, int age, int weight, string eyeColor)
+        {
+            Name = name;
+            Age = age;
+            Weight = weight;
+            EyeColor = eyeColor;
+        }   
+    }
+        
+}
+-------------------
+=======VIEWS=======
+
+@model aspnet_ex03.Models.People;
+
+@{
+    foreach (var item in Model.repo)
+    {
+        <div>
+
+            <li>Name: @item.Name</li>
+            <li>Age: @item.Age</li>
+            <li>Weight: @item.Weight</li>
+            <li>Eye Color: @item.EyeColor</li>
+
+        </div>
+        <hr /><br />
+    }
+}
+
+
+-------------------
+=====CONTROLLERS===
+
+namespace aspnet_ex03.Controllers
+{
+    public class HomeController : Controller
+    {
+
+        People repo = new People();
+
+        public IActionResult Index()
+        {
+            return View(repo);
+        }
+    }
+}
